@@ -12,13 +12,16 @@ def home():
 def about():
     return render_template('about.html')
 
-app.route('/categor')
-def about():
+
+@app.route('/category')
+def category():
     return render_template('category.html')
 
-app.route('/contacts')
-def about():
+
+@app.route('/contacts')
+def contacts():
     return render_template('contacts.html')
+
 
 if __name__ == '__main__':
     # debug=True: автоматичний перезапуск після змін у коді та детальні повідомлення про помилки.
