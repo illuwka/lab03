@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Зворотний зв'язок{% endblock %}
+
+{% block content %}
+<section class="mx-auto max-w-5xl">
+    <div class="mb-8">
+        <p class="mb-2 text-sm font-semibold uppercase tracking-widest text-blue-600">Ми на зв’язку</p>
+        <h1 class="text-4xl font-bold tracking-tight text-gray-900">Зворотний зв’язок</h1>
+        <p class="mt-3 max-w-2xl text-lg text-gray-600">
+            Потрібна допомога або маєте запитання? Зв’яжіться зі службою підтримки зручним для вас способом.
+        </p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2">
+        <section class="rounded-2xl bg-white p-6 shadow-md ring-1 ring-gray-200" aria-labelledby="contacts-title">
+            <h2 id="contacts-title" class="mb-5 text-2xl font-semibold text-gray-900">Наші контакти</h2>
+
+            <div class="space-y-4">
+                <div class="rounded-xl bg-blue-50 p-4">
+                    <p class="text-sm font-medium text-gray-500">Електронна пошта</p>
+                    <a class="mt-1 inline-block text-lg font-semibold text-blue-700 hover:text-blue-900 hover:underline"
+                       href="mailto:vgus489@gmail.com">vgus489@gmail.com</a>
+                </div>
+
+                <div class="rounded-xl bg-indigo-50 p-4">
+                    <p class="text-sm font-medium text-gray-500">Телефон</p>
+                    <a class="mt-1 inline-block text-lg font-semibold text-indigo-700 hover:text-indigo-900 hover:underline"
+                       href="tel:+380671116942">+380 67 111 6942</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="rounded-2xl bg-white p-6 shadow-md ring-1 ring-gray-200" aria-labelledby="hours-title">
+            <p class="mb-2 text-sm font-semibold uppercase tracking-widest text-emerald-700">Час роботи</p>
+            <h2 id="hours-title" class="mb-5 text-2xl font-semibold text-gray-900">
+                Графік роботи служби підтримки
+            </h2>
+
+            <dl class="divide-y divide-gray-200">
+                <div class="flex items-center justify-between gap-4 py-4">
+                    <dt class="font-medium text-gray-700">Понеділок — п’ятниця</dt>
+                    <dd class="whitespace-nowrap rounded-full bg-emerald-100 px-3 py-1 font-semibold text-emerald-800">
+                        08:00–21:00
+                    </dd>
+                </div>
+                <div class="flex items-center justify-between gap-4 py-4">
+                    <dt class="font-medium text-gray-700">Субота — неділя</dt>
+                    <dd class="rounded-full bg-gray-100 px-3 py-1 font-semibold text-gray-600">Вихідний</dd>
+                </div>
+            </dl>
+
+            <p class="mt-4 text-sm text-gray-500">У робочі години ми радо допоможемо вам.</p>
+        </section>
+    </div>
+</section>
+{% endblock %}
