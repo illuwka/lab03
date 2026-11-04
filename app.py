@@ -23,7 +23,16 @@ def contacts():
     return render_template('contacts.html')
 
 
+@app.route('/shop')
+def shop():
+    return render_template('shop.html')
+
+
+
+
+
+
 if __name__ == '__main__':
     # debug=True: автоматичний перезапуск після змін у коді та детальні повідомлення про помилки.
     # Використовується лише під час розробки.
-    app.run(debug=True)
+    app.run(debug=True, use_reloader=False)
