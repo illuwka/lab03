@@ -1,64 +1,42 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>&#1052;&#1072;&#1075;&#1072;&#1079;&#1080;&#1085; &#1089;&#1082;&#1110;&#1085;&#1110;&#1074; CS2</title>
-  <style>
-    * { box-sizing: border-box; }
-    body { margin: 0; color: #202332; background: #f6f7f9; font-family: Arial, sans-serif; }
-    .top-nav { position: sticky; top: 0; z-index: 5; background: #050505; color: white; }
-    .nav-inner { max-width: 1120px; min-height: 66px; margin: auto; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-    .brand, .nav-links a { color: white; text-decoration: none; }
-    .brand { font-size: 20px; font-weight: bold; white-space: nowrap; }
-    .nav-links { display: flex; gap: 20px; white-space: nowrap; }
-    .nav-links a { font-size: 14px; }
-    .nav-links a:hover, .nav-links .active { color: #d6d300; }
-    main { max-width: 1120px; margin: auto; padding: 36px 20px 60px; }
-    .intro { margin-bottom: 26px; }
-    h1 { margin: 0 0 8px; font-size: 32px; }
-    .intro p { margin: 0; color: #717787; }
-    .catalog-head { margin: 22px 0 14px; }
-    h2 { margin: 0; font-size: 22px; }
-    .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
-    .item { overflow: hidden; border: 1px solid #e0e3e9; border-radius: 8px; background: white; }
-    .item-image { width: 100%; height: 160px; display: block; object-fit: contain; padding: 12px; background: #eceef2; }
-    .item-info { padding: 13px; }
-    .weapon { margin-bottom: 4px; color: #717787; font-size: 12px; }
-    .skin { font-size: 15px; font-weight: bold; }
-    .item-bottom { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 12px; }
-    .quality { color: #797100; font-size: 12px; }
-    .price { font-size: 16px; font-weight: bold; white-space: nowrap; }
-    footer { border-top: 1px solid #e0e3e9; padding: 20px; color: #717787; text-align: center; font-size: 12px; }
-    @media (max-width: 850px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .nav-inner { gap: 14px; } .nav-links { gap: 12px; } }
-    @media (max-width: 650px) { .nav-inner { flex-wrap: wrap; } .brand { flex: 1; } .nav-links { order: 3; width: 100%; justify-content: space-between; overflow-x: auto; } main { padding: 26px 14px 42px; } .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } .item-image { height: 130px; } }
-    @media (max-width: 380px) { .grid { grid-template-columns: 1fr; } .item-image { height: 170px; } }
-  </style>
-</head>
-<body>
-  <nav class="top-nav">
-    <div class="nav-inner">
-      <a class="brand" href="{{ url_for('home') }}">LOQ Market</a>
-      <div class="nav-links">
-        <a href="{{ url_for('home') }}">&#1043;&#1086;&#1083;&#1086;&#1074;&#1085;&#1072;</a>
-        <a class="active" href="{{ url_for('shop') }}">&#1052;&#1072;&#1075;&#1072;&#1079;&#1080;&#1085;</a>
-        <a href="{{ url_for('about') }}">&#1055;&#1088;&#1086; &#1085;&#1072;&#1089;</a>
-        <a href="{{ url_for('contacts') }}">&#1047;&#1074;&#1086;&#1088;&#1086;&#1090;&#1085;&#1080;&#1081; &#1079;&#1074;&#8217;&#1103;&#1079;&#1086;&#1082;</a>
-      </div>
-    </div>
-  </nav>
+{% extends "base.html" %}
 
-  <main>
-    <section class="intro">
-      <h1>&#1052;&#1072;&#1075;&#1072;&#1079;&#1080;&#1085; &#1089;&#1082;&#1110;&#1085;&#1110;&#1074; CS2</h1>
-      <p>&#1054;&#1073;&#1080;&#1088;&#1072;&#1081; &#1089;&#1082;&#1110;&#1085;, &#1087;&#1077;&#1088;&#1077;&#1074;&#1110;&#1088;&#1103;&#1081; &#1094;&#1110;&#1085;&#1091; &#1090;&#1072; &#1103;&#1082;&#1110;&#1089;&#1090;&#1100;.</p>
-    </section>
-    <h2 class="catalog-head">&#1050;&#1072;&#1090;&#1072;&#1083;&#1086;&#1075; &#1089;&#1082;&#1110;&#1085;&#1110;&#1074;</h2>
-    </div>
-    <section class="grid" id="grid"></section>
-  </main>
+{% block title %}CS2 Skin Shop{% endblock %}
 
-  <footer>&copy; 2026 &middot; &#1044;&#1077;&#1084;&#1086;-&#1084;&#1072;&#1075;&#1072;&#1079;&#1080;&#1085; CS2. &#1058;&#1086;&#1088;&#1075;&#1110;&#1074;&#1083;&#1103; &#1085;&#1077; &#1087;&#1110;&#1076;&#1082;&#1083;&#1102;&#1095;&#1077;&#1085;&#1072;.</footer>
+{% block extra_head %}
+<style>
+  * { box-sizing: border-box; }
+  body.bg-gray-100 { margin: 0; color: #202332; background: #f6f7f9; font-family: Arial, sans-serif; }
+  .shop-page { width: 100%; }
+  .intro { margin-bottom: 26px; }
+  h1 { margin: 0 0 8px; font-size: 32px; font-weight: 700; }
+  .intro p { margin: 0; color: #717787; }
+  .catalog-head { margin: 22px 0 14px; font-size: 22px; font-weight: 700; }
+  .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+  .item { overflow: hidden; border: 1px solid #e0e3e9; border-radius: 8px; background: white; }
+  .item-image { display: block; width: 100%; height: 160px; padding: 12px; object-fit: contain; background: #eceef2; }
+  .item-info { padding: 13px; }
+  .weapon { margin-bottom: 4px; color: #717787; font-size: 12px; }
+  .skin { font-size: 15px; font-weight: bold; }
+  .item-bottom { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 12px; }
+  .quality { color: #797100; font-size: 12px; }
+  .price { font-size: 16px; font-weight: bold; white-space: nowrap; }
+  .shop-footer { margin: 40px -16px -16px; padding: 20px; border-top: 1px solid #e0e3e9; color: #717787; text-align: center; font-size: 12px; }
+  @media (max-width: 850px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; } }
+  @media (max-width: 650px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } .item-image { height: 130px; } }
+  @media (max-width: 380px) { .grid { grid-template-columns: 1fr; } .item-image { height: 170px; } }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="shop-page">
+  <section class="intro">
+    <h1>&#1052;&#1072;&#1075;&#1072;&#1079;&#1080;&#1085; &#1089;&#1082;&#1110;&#1085;&#1110;&#1074; CS2</h1>
+    <p>&#1054;&#1073;&#1080;&#1088;&#1072;&#1081; &#1089;&#1082;&#1110;&#1085;, &#1087;&#1077;&#1088;&#1077;&#1074;&#1110;&#1088;&#1103;&#1081; &#1094;&#1110;&#1085;&#1091; &#1090;&#1072; &#1103;&#1082;&#1110;&#1089;&#1090;&#1100;.</p>
+  </section>
+  <h2 class="catalog-head">&#1050;&#1072;&#1090;&#1072;&#1083;&#1086;&#1075; &#1089;&#1082;&#1110;&#1085;&#1110;&#1074;</h2>
+  <section class="grid" id="grid"></section>
+  <footer class="shop-footer">&copy; 2026 &middot; &#1044;&#1077;&#1084;&#1086;-&#1084;&#1072;&#1075;&#1072;&#1079;&#1080;&#1085; CS2. &#1058;&#1086;&#1088;&#1075;&#1110;&#1074;&#1083;&#1103; &#1085;&#1077; &#1087;&#1110;&#1076;&#1082;&#1083;&#1102;&#1095;&#1077;&#1085;&#1072;.</footer>
+</div>
 
   <script>
     const skins = [
@@ -87,7 +65,4 @@
       </article>
     `).join('');
   </script>
-</body>
-</html>
-
-
+{% endblock %}
