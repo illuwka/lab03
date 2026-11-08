@@ -1,38 +1,44 @@
 {% extends "base.html" %}
-{% block title %}Магазин скінів CS2{% endblock %}
+
+{% block title %}CS2 Skin Shop{% endblock %}
+
 {% block extra_head %}
 <style>
-  .shop-page { color: #202332; font-family: Arial, sans-serif; }
-  .shop-intro { margin-bottom: 26px; }
-  .shop-intro h1 { margin: 0 0 8px; font-size: 32px; }
-  .shop-intro p { margin: 0; color: #717787; }
-  .shop-catalog-title { margin: 22px 0 14px; font-size: 22px; }
-  .shop-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
-  .shop-item { overflow: hidden; border: 1px solid #e0e3e9; border-radius: 8px; background: white; }
-  .shop-item-image { width: 100%; height: 160px; display: block; object-fit: contain; padding: 12px; background: #eceef2; }
-  .shop-item-info { padding: 13px; }
-  .shop-weapon { margin-bottom: 4px; color: #717787; font-size: 12px; }
-  .shop-skin { font-size: 15px; font-weight: bold; }
-  .shop-item-bottom { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 12px; }
-  .shop-quality { color: #797100; font-size: 12px; }
-  .shop-price { font-size: 16px; font-weight: bold; white-space: nowrap; }
-  .shop-footer { margin-top: 30px; padding: 20px; border-top: 1px solid #e0e3e9; color: #717787; text-align: center; font-size: 12px; }
-  @media (max-width: 850px) { .shop-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-  @media (max-width: 650px) { .shop-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } .shop-item-image { height: 130px; } }
-  @media (max-width: 380px) { .shop-grid { grid-template-columns: 1fr; } .shop-item-image { height: 170px; } }
+  * { box-sizing: border-box; }
+  body.bg-gray-100 { margin: 0; color: #202332; background: #f6f7f9; font-family: Arial, sans-serif; }
+  .shop-page { width: 100%; }
+  .intro { margin-bottom: 26px; }
+  h1 { margin: 0 0 8px; font-size: 32px; font-weight: 700; }
+  .intro p { margin: 0; color: #717787; }
+  .catalog-head { margin: 22px 0 14px; font-size: 22px; font-weight: 700; }
+  .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+  .item { overflow: hidden; border: 1px solid #e0e3e9; border-radius: 12px; background: white; }
+  .item-image { display: block; width: 100%; height: 160px; padding: 12px; object-fit: contain; background: #eceef2; }
+  .item-info { padding: 13px; }
+  .weapon { margin-bottom: 4px; color: #717787; font-size: 12px; }
+  .skin { font-size: 15px; font-weight: bold; }
+  .item-bottom { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 12px; }
+  .quality { color: #797100; font-size: 12px; }
+  .price { font-size: 16px; font-weight: bold; white-space: nowrap; }
+  .shop-footer { margin: 40px -16px -16px; padding: 20px; border-top: 1px solid #e0e3e9; color: #717787; text-align: center; font-size: 12px; }
+  @media (max-width: 850px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; } }
+  @media (max-width: 650px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } .item-image { height: 130px; } }
+  @media (max-width: 380px) { .grid { grid-template-columns: 1fr; } .item-image { height: 170px; } }
 </style>
 {% endblock %}
+
 {% block content %}
 <div class="shop-page">
-  <section class="shop-intro">
-    <h1>Магазин скінів CS2</h1>
-    <p>Обирай скін, перевіряй ціну та якість.</p>
+  <section class="intro">
+    <h1>&#1052;&#1072;&#1075;&#1072;&#1079;&#1080;&#1085; &#1089;&#1082;&#1110;&#1085;&#1110;&#1074; CS2</h1>
+    <p>&#1054;&#1073;&#1080;&#1088;&#1072;&#1081; &#1089;&#1082;&#1110;&#1085;, &#1087;&#1077;&#1088;&#1077;&#1074;&#1110;&#1088;&#1103;&#1081; &#1094;&#1110;&#1085;&#1091; &#1090;&#1072; &#1103;&#1082;&#1110;&#1089;&#1090;&#1100;.</p>
   </section>
-  <h2 class="shop-catalog-title">Каталог скінів</h2>
-  <section class="shop-grid" id="grid"></section>
-  <footer class="shop-footer">&copy; 2026 &middot; Демо-магазин CS2. Торгівля не підключена.</footer>
+  <h2 class="catalog-head">&#1050;&#1072;&#1090;&#1072;&#1083;&#1086;&#1075; &#1089;&#1082;&#1110;&#1085;&#1110;&#1074;</h2>
+  <section class="grid" id="grid"></section>
+  <footer class="shop-footer">&copy; 2026 &middot; &#1044;&#1077;&#1084;&#1086;-&#1084;&#1072;&#1075;&#1072;&#1079;&#1080;&#1085; CS2. &#1058;&#1086;&#1088;&#1075;&#1110;&#1074;&#1083;&#1103; &#1085;&#1077; &#1087;&#1110;&#1076;&#1082;&#1083;&#1102;&#1095;&#1077;&#1085;&#1072;.</footer>
 </div>
-<script>
+
+  <script>
     const skins = [
       {weapon:'AWP', skin:'Dragon Lore', quality:'Factory New', price:1249, image:'https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLwiYbf_jdk4veqYaF7IfysCnWRxuF4j-B-Xxa_nBovp3Pdwtj9cC_GaAd0DZdwQu9fuhS4kNy0NePntVTbjYpCyyT_3CgY5i9j_a9cBkcCWUKV'},
       {weapon:'Karambit', skin:'Doppler - Phase 2', quality:'Factory New', price:785, image:'https://cdn.cs2skins.gg/screenshots/skin-e7fd9a1907bb/fn/render.avif'},
@@ -49,14 +55,14 @@
     ];
 
     document.getElementById('grid').innerHTML = skins.map(item => `
-      <article class="shop-item">
-        <img class="shop-item-image" src="${item.image}" alt="${item.weapon} | ${item.skin}" loading="lazy">
-        <div class="shop-item-info">
-          <div class="shop-weapon">${item.weapon}</div>
-          <div class="shop-skin">${item.skin}</div>
-          <div class="shop-item-bottom"><span class="shop-quality">${item.quality}</span><span class="shop-price">$${item.price}</span></div>
+      <article class="item">
+        <img class="item-image" src="${item.image}" alt="${item.weapon} | ${item.skin}" loading="lazy">
+        <div class="item-info">
+          <div class="weapon">${item.weapon}</div>
+          <div class="skin">${item.skin}</div>
+          <div class="item-bottom"><span class="quality">${item.quality}</span><span class="price">$${item.price}</span></div>
         </div>
       </article>
     `).join('');
-</script>
+  </script>
 {% endblock %}

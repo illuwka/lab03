@@ -47,16 +47,14 @@
 {% endblock %}
 
 {% block content %}
-<div class="home-page">
-  <section class="home-grid" aria-label="Про LOQ Market">
-    <div class="home-copy home-copy--intro">
-      <p class="home-kicker">LOQ Market · світ CS2</p>
-      <h1>Знайди скін, який пасує саме тобі</h1>
-      <p>LOQ Market — місце, де можна переглядати скіни для Counter-Strike 2, порівнювати варіанти та знаходити новий вигляд для улюбленої зброї.</p>
-      <div class="home-actions">
-        <a class="home-button" href="{{ url_for('shop') }}">Переглянути магазин <span aria-hidden="true">&nbsp;→</span></a>
-        <a class="home-button home-button--secondary" href="{{ url_for('about') }}">Дізнатися про нас</a>
-      </div>
+<h1 class="text-3xl font-bold mb-4">Ласкаво просимо на головну сторінку</h1>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div>
+        <img
+            src="https://picsum.photos/id/180/800/600"
+            alt="Ілюстративне фото"
+            class="w-full rounded-lg shadow-md"
+        />
     </div>
 
     <article class="skin-feature skin-feature--top">
