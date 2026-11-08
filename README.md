@@ -70,8 +70,8 @@ python app.py
 | Учасник | Роль | GitHub |
 |---|---|---|
 | Прадійчук Ілля Миколайович | Teamlead | https://github.com/illuwka |
-| Завиднюк Влад Володимирович | Developer | https://github.com/Crunqz |
-| Біскій Давид Анатолійович | QA | https://github.com/flavour676767 |
+| Завиднюк Влад Володимирович | Developer | https://github.com/flavour676767 |
+| Біскій Давид Анатолійович | QA | https://github.com/Crunqz |
 
 Група: ІПЗ-22
 
