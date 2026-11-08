@@ -12,12 +12,6 @@ def home():
 def about():
     return render_template('about.html')
 
-
-@app.route('/category')
-def category():
-    return render_template('category.html')
-
-
 @app.route('/contacts')
 def contacts():
     return render_template('contacts.html')
