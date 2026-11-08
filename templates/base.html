@@ -8,6 +8,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
         html { scrollbar-gutter: stable; }
+        .nav-link:hover,
+        .nav-link.active { color: #facc15; }
         @keyframes slideDown {
             0% { max-height: 0; opacity: 0; }
             100% { max-height: 300px; opacity: 1; }
@@ -49,10 +51,10 @@
 
             <!-- Меню для широких екранів -->
             <div class="hidden md:flex space-x-4">
-                <a href="{{ url_for('home') }}" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline">Головна</a>
-                <a href="{{ url_for('shop') }}" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline">Магазин</a>
-                <a href="{{ url_for('about') }}" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline">Про нас</a>
-                <a href="{{ url_for('contacts') }}" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline">Зворотний зв'язок</a>
+                <a href="{{ url_for('home') }}" class="nav-link text-white transition-colors duration-300 hover:underline{% if request.endpoint == 'home' %} active{% endif %}"{% if request.endpoint == 'home' %} aria-current="page"{% endif %}>Головна</a>
+                <a href="{{ url_for('shop') }}" class="nav-link text-white transition-colors duration-300 hover:underline{% if request.endpoint == 'shop' %} active{% endif %}"{% if request.endpoint == 'shop' %} aria-current="page"{% endif %}>Магазин</a>
+                <a href="{{ url_for('about') }}" class="nav-link text-white transition-colors duration-300 hover:underline{% if request.endpoint == 'about' %} active{% endif %}"{% if request.endpoint == 'about' %} aria-current="page"{% endif %}>Про нас</a>
+                <a href="{{ url_for('contacts') }}" class="nav-link text-white transition-colors duration-300 hover:underline{% if request.endpoint == 'contacts' %} active{% endif %}"{% if request.endpoint == 'contacts' %} aria-current="page"{% endif %}>Зворотний зв'язок</a>
             </div>
 
             <!-- Кнопка меню для мобільних пристроїв -->
@@ -66,10 +68,10 @@
 
         <!-- Мобільне меню (приховане за замовчуванням) -->
         <div id="mobile-menu" class="hidden md:hidden overflow-hidden">
-            <a href="{{ url_for('home') }}" class="block text-white hover:text-yellow-200 py-2 transition duration-300 hover:translate-x-2">Головна</a>
-            <a href="{{ url_for('shop') }}" class="block text-white hover:text-yellow-200 py-2 transition duration-300 hover:translate-x-2">Магазин</a>
-            <a href="{{ url_for('about') }}" class="block text-white hover:text-yellow-200 py-2 transition duration-300 hover:translate-x-2">Про нас</a>
-            <a href="{{ url_for('contacts') }}" class="block text-white hover:text-yellow-200 py-2 transition duration-300 hover:translate-x-2">Зворотний зв'язок</a>
+            <a href="{{ url_for('home') }}" class="nav-link block text-white py-2 transition duration-300 hover:translate-x-2{% if request.endpoint == 'home' %} active{% endif %}"{% if request.endpoint == 'home' %} aria-current="page"{% endif %}>Головна</a>
+            <a href="{{ url_for('shop') }}" class="nav-link block text-white py-2 transition duration-300 hover:translate-x-2{% if request.endpoint == 'shop' %} active{% endif %}"{% if request.endpoint == 'shop' %} aria-current="page"{% endif %}>Магазин</a>
+            <a href="{{ url_for('about') }}" class="nav-link block text-white py-2 transition duration-300 hover:translate-x-2{% if request.endpoint == 'about' %} active{% endif %}"{% if request.endpoint == 'about' %} aria-current="page"{% endif %}>Про нас</a>
+            <a href="{{ url_for('contacts') }}" class="nav-link block text-white py-2 transition duration-300 hover:translate-x-2{% if request.endpoint == 'contacts' %} active{% endif %}"{% if request.endpoint == 'contacts' %} aria-current="page"{% endif %}>Зворотний зв'язок</a>
         </div>
     </nav>
 
