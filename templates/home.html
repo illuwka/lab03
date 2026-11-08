@@ -1,23 +1,80 @@
 {% extends "base.html" %}
 
-{% block title %}Головна{% endblock %}
+{% block title %}Головна — LOQ Market{% endblock %}
+
+{% block extra_head %}
+<style>
+  body.bg-gray-100 { margin: 0; color: #e9e8e4; background: #1d2021; font-family: Arial, sans-serif; }
+  nav a:hover { color: #f4e500 !important; }
+  nav .container > div a:first-child { color: #f4e500; }
+  .home-page { width: 100%; }
+  .home-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 22px; }
+  .home-copy, .skin-feature { min-height: 280px; overflow: hidden; border: 1px solid #343839; border-radius: 12px; }
+  .home-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(24px, 4vw, 52px); background: #17191a; }
+  .home-copy--intro, .home-copy--about { grid-column: span 7; }
+  .skin-feature--top, .skin-feature--bottom { grid-column: span 5; }
+  .home-kicker { margin: 0 0 14px; color: #f4e500; font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+  .home-copy h1, .home-copy h2 { max-width: 680px; margin: 0 0 16px; color: #f1f0ec; font-size: clamp(30px, 4.2vw, 54px); font-weight: 800; line-height: 1.06; letter-spacing: -.035em; }
+  .home-copy h2 { font-size: clamp(27px, 3.3vw, 42px); }
+  .home-copy p { max-width: 590px; margin: 0; color: #a9a8a2; font-size: 17px; line-height: 1.7; }
+  .home-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+  .home-button { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 20px; border: 1px solid #f4e500; border-radius: 6px; color: #17191a !important; background: #f4e500; font-size: 14px; font-weight: 700; text-decoration: none; transition: background .2s ease, transform .2s ease; }
+  .home-button:hover { background: #fff34a; transform: translateY(-2px); }
+  .home-button--secondary { color: #f1f0ec !important; background: transparent; }
+  .home-button--secondary:hover { color: #17191a !important; }
+  .skin-feature { position: relative; display: flex; align-items: center; justify-content: center; min-height: 280px; padding: 24px; background: #232728; }
+  .skin-feature img { display: block; width: 100%; height: 230px; object-fit: contain; filter: drop-shadow(0 16px 20px rgb(0 0 0 / 28%)); transition: transform .25s ease; }
+  .skin-feature:hover img { transform: scale(1.045); }
+  .skin-caption { position: absolute; right: 18px; bottom: 16px; left: 18px; display: flex; align-items: end; justify-content: space-between; gap: 12px; padding: 12px 14px; border: 1px solid rgb(255 255 255 / 8%); border-radius: 8px; background: rgb(20 22 23 / 90%); }
+  .skin-type { color: #a9a8a2; font-size: 12px; }
+  .skin-name { margin-top: 4px; color: #f1f0ec; font-size: 16px; font-weight: 700; }
+  .skin-badge { flex: 0 0 auto; color: #f4e500; font-size: 12px; font-weight: 700; }
+  @media (max-width: 760px) {
+    .home-grid { grid-template-columns: 1fr; gap: 14px; }
+    .home-copy--intro, .home-copy--about, .skin-feature--top, .skin-feature--bottom { grid-column: auto; }
+    .home-copy, .skin-feature { min-height: 250px; }
+    .home-copy { padding: 28px 24px; }
+    .skin-feature img { height: 205px; }
+  }
+  @media (max-width: 420px) {
+    .home-copy h1 { font-size: 34px; }
+    .home-copy h2 { font-size: 29px; }
+    .home-copy p { font-size: 15px; }
+    .skin-feature { min-height: 230px; padding: 16px; }
+    .skin-feature img { height: 180px; }
+  }
+</style>
+{% endblock %}
 
 {% block content %}
-<h1 class="text-3xl font-bold mb-4">Ласкаво просимо на головну сторінку</h1>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div>
-        <img
-            src="https://picsum.photos/id/180/800/600"
-            alt="Ілюстративне фото"
-            class="w-full rounded-lg shadow-md"
-        />
+<div class="home-page">
+  <section class="home-grid" aria-label="Про LOQ Market">
+    <div class="home-copy home-copy--intro">
+      <p class="home-kicker">LOQ Market · світ CS2</p>
+      <h1>Знайди скін, який пасує саме тобі</h1>
+      <p>LOQ Market — місце, де можна переглядати скіни для Counter-Strike 2, порівнювати варіанти та знаходити новий вигляд для улюбленої зброї.</p>
+      <div class="home-actions">
+        <a class="home-button" href="{{ url_for('shop') }}">Переглянути магазин <span aria-hidden="true">&nbsp;→</span></a>
+        <a class="home-button home-button--secondary" href="{{ url_for('about') }}">Дізнатися про нас</a>
+      </div>
     </div>
-    <div>
-        <p class="text-lg">
-            Це приклад тексту для головної сторінки. Тут ви можете додати
-            інформацію про ваш проєкт, компанію або будь-який інший контент,
-            який ви хочете показати відвідувачам.
-        </p>
+
+    <article class="skin-feature skin-feature--top">
+      <img src="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLwiYbf_jdk4veqYaF7IfysCnWRxuF4j-B-Xxa_nBovp3Pdwtj9cC_GaAd0DZdwQu9fuhS4kNy0NePntVTbjYpCyyT_3CgY5i9j_a9cBkcCWUKV" alt="AWP Dragon Lore — скін із каталогу LOQ Market" loading="lazy">
+      <div class="skin-caption"><div><div class="skin-type">AWP</div><div class="skin-name">Dragon Lore</div></div><span class="skin-badge">Легендарний скін</span></div>
+    </article>
+
+    <article class="skin-feature skin-feature--bottom">
+      <img src="https://cdn.cs2skins.gg/screenshots/skin-2599a8720f89/bs/render.avif" alt="AK-47 Fire Serpent — скін із каталогу LOQ Market" loading="lazy">
+      <div class="skin-caption"><div><div class="skin-type">AK-47</div><div class="skin-name">Fire Serpent</div></div><span class="skin-badge">Обери свій стиль</span></div>
+    </article>
+
+    <div class="home-copy home-copy--about">
+      <p class="home-kicker">Обирай · порівнюй · екіпіруй</p>
+      <h2>Твій інвентар — твій стиль</h2>
+      <p>У каталозі зібрані скіни для різної зброї та смаків: від яскравих ножів до впізнаваних розфарбувань автоматів. Переглядай добірку, звертай увагу на стан і ціну та переходь до магазину, щоб знайти свій варіант.</p>
+      <div class="home-actions"><a class="home-button" href="{{ url_for('shop') }}">Обрати скін <span aria-hidden="true">&nbsp;→</span></a></div>
     </div>
+  </section>
 </div>
 {% endblock %}
