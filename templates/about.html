@@ -2,20 +2,142 @@
 
 {% block title %}Про нас{% endblock %}
 
+{% block extra_head %}
+<style>
+  .about-page { color: #191c24; }
+  .about-hero {
+    display: grid;
+    grid-template-columns: 1.08fr .92fr;
+    gap: 32px;
+    align-items: center;
+    padding: clamp(24px, 5vw, 56px);
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #fff 0%, #f2f4f7 100%);
+    box-shadow: 0 18px 50px rgba(24, 30, 42, .07);
+  }
+  .about-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 18px;
+    padding: 8px 12px;
+    border: 1px solid #f1d98a;
+    border-radius: 999px;
+    background: #fff8df;
+    color: #765a00;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .about-eyebrow::before {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #e0ae21;
+    content: "";
+  }
+  .about-title {
+    max-width: 620px;
+    margin: 0 0 16px;
+    font-size: clamp(36px, 5vw, 58px);
+    font-weight: 800;
+    letter-spacing: -.045em;
+    line-height: 1.04;
+  }
+  .about-lead {
+    max-width: 540px;
+    margin: 0;
+    color: #606775;
+    font-size: 18px;
+    line-height: 1.75;
+  }
+  .about-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .about-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 18px;
+    border: 1px solid #17191e;
+    border-radius: 10px;
+    background: #17191e;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+  }
+  .about-button:hover { transform: translateY(-2px); background: #30343d; box-shadow: 0 8px 18px rgba(23, 25, 30, .16); }
+  .about-button-secondary { border-color: #d8dce3; background: #fff; color: #252934; }
+  .about-button-secondary:hover { background: #f8f9fb; }
+  .about-visual {
+    position: relative;
+    display: grid;
+    min-height: 330px;
+    padding: 22px;
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    background: radial-gradient(circle at 50% 40%, #fff 0, #f1f2f5 72%);
+  }
+  .about-visual::before, .about-visual::after {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border: 1px solid rgba(24, 27, 34, .07);
+    border-radius: 50%;
+    content: "";
+  }
+  .about-visual::after { width: 250px; height: 250px; }
+  .about-logo {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: min(100%, 360px);
+    max-height: 290px;
+    border-radius: 14px;
+    object-fit: contain;
+    box-shadow: 0 16px 38px rgba(25, 28, 36, .12);
+  }
+  @media (max-width: 760px) {
+    .about-hero { grid-template-columns: 1fr; gap: 24px; }
+    .about-visual { min-height: 260px; }
+    .about-logo { max-height: 220px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .about-button { transition: none; }
+  }
+</style>
+{% endblock %}
+
 {% block content %}
-<h1 class="text-3xl font-bold mb-4">Про нас</h1>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="about-page">
+  <section class="about-hero" aria-labelledby="about-title">
     <div>
-        <p class="text-lg">
-            Ми — команда Loq Team. Займаємося інтернет-підтримкою скінів у CS2. Ми нова команда.
-        </p>
+      <span class="about-eyebrow">Знайомство з командою</span>
+      <h1 class="about-title" id="about-title">Привіт, ми Loq Team</h1>
+      <p class="about-lead">
+        Ми — нова команда, яка розвиває проєкт про скіни Counter-Strike 2.
+        Тут можна переглянути каталог і дізнатися більше про наш магазин.
+      </p>
+      <div class="about-actions">
+        <a class="about-button" href="{{ url_for('shop') }}">Переглянути каталог <span aria-hidden="true">&nbsp;→</span></a>
+        <a class="about-button about-button-secondary" href="{{ url_for('contacts') }}">Зв’язатися з нами</a>
+      </div>
     </div>
-    <div>
-        <img
-            src=https://img.magnific.com/premium-vector/loq-letter-logo-design-technology-company-loq-logo-design-black-white-color-combination-loq-logo-loq-vector-loq-design-loq-icon-loq-alphabet-loq-typography-logo-design_229120-166978.jpg?semt=ais_hybrid&w=740&q=80
-            alt="Ілюстративне фото"
-            class="w-full rounded-lg shadow-md"
-        />
+    <div class="about-visual">
+      <img
+        class="about-logo"
+        src="https://img.magnific.com/premium-vector/loq-letter-logo-design-technology-company-loq-logo-design-black-white-color-combination-loq-logo-loq-vector-loq-design-loq-icon-loq-alphabet-loq-typography-logo-design_229120-166978.jpg?semt=ais_hybrid&amp;w=740&amp;q=80"
+        alt="Логотип LOQ"
+        loading="lazy"
+      />
     </div>
+  </section>
+
 </div>
 {% endblock %}
